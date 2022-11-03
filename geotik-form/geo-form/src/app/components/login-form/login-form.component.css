@@ -1,0 +1,30 @@
+mat-card {
+    width: 50vw;
+    height: 30vw;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-form,
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-reset {
+    color: rgb(100, 100, 100);
+    font-size: 12px;
+    text-decoration: none;
+    text-align: end;
+}
+
+.status-info {
+    color: rgb(100, 100, 100);
+    margin: 20px;
+    font-size: 16px;
+}

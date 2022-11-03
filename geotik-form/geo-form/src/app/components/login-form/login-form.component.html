@@ -1,0 +1,17 @@
+<form>
+    <div class="login-form">
+        <mat-form-field appearance="standard">
+            <mat-label>Login</mat-label>
+            <input matInput placeholder="Login" type="email" id="login" name="login" [(ngModel)]="userDataInputs.login">
+        </mat-form-field>      
+    </div>
+    <div class="password-form">
+        <mat-form-field appearance="standard">
+            <mat-label>Hasło</mat-label>
+            <input matInput placeholder="Hasło" type="password" id="password" name="password" [(ngModel)]="userDataInputs.password">
+        </mat-form-field>
+        <a routerLink="reset" class="password-reset">Zresetuj hasło</a>
+    </div>
+    <p class="status-info">{{statusInfo}}</p>
+    <button mat-raised-button color="primary" (click)="authUser()">Zaloguj</button>
+</form>

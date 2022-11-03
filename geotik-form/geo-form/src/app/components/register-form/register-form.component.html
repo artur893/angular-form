@@ -1,0 +1,61 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+        <mat-form-field appearance="standard">
+            <mat-label>E-mail</mat-label>
+            <div class="input-container">
+                <input matInput placeholder="E-mail" type="email" id="login" name="login" formControlName="login">
+                <div class="icons">
+                    <mat-icon *ngIf="!this.registerForm.controls['login'].errors" fontIcon="done" class="done">
+                    </mat-icon>
+                    <mat-icon *ngIf="this.registerForm.controls['login'].errors" fontIcon="error" color="warn"
+                        class="error"></mat-icon>
+                    <div class="error-pop-up">
+                        <ul>
+                            <li>{{loginErrorMessage()}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <mat-error *ngIf="registerForm.invalid">{{loginErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="password-form">
+        <mat-form-field appearance="standard">
+            <mat-label>Hasło</mat-label>
+            <div class="input-container">
+                <input matInput placeholder="Hasło" type="password" id="password" name="password"
+                    formControlName="password" (ngModelChange)="changeProgressBarValue()">
+                <div class="icons">
+                    <mat-icon *ngIf="!this.registerForm.controls['password'].errors" fontIcon="done" class="done">
+                    </mat-icon>
+                    <mat-icon *ngIf="this.registerForm.controls['password'].errors" fontIcon="error" color="warn"
+                        class="error"></mat-icon>
+                    <div class="error-pop-up" id="error-pop-up-password">
+                        <ul>
+                            <li class="password-error" [style.color]="changeInfoTextColor('containsCapital')">
+                                Wielka litera</li>
+                            <li class="password-error" [style.color]="changeInfoTextColor('containsLowercase')">
+                                Mała litera</li>
+                            <li class="password-error" [style.color]="changeInfoTextColor('containsNumber')">
+                                Cyfra</li>
+                            <li class="password-error" [style.color]="changeInfoDigitTextColor()">
+                                8 znaków</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <mat-error *ngIf="registerForm.invalid">{{passwordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-progress-bar class="progress-bar" color="primary" mode="determinate" [value]="barValue"></mat-progress-bar>
+    </div>
+    <div class="confirm-form">
+        <mat-form-field appearance="standard">
+            <mat-label>Potwierdź hasło</mat-label>
+            <input matInput placeholder="Potwierdź hasło" type="password" id="confirm" name="confirm"
+                formControlName="confirm">
+            <mat-error *ngIf="registerForm.invalid">{{confirmErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <p class="status-info">{{statusInfo}}</p>
+    <button mat-raised-button color="primary">Zarejestruj</button>
+</form>
